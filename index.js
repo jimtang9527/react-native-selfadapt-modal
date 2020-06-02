@@ -54,7 +54,7 @@ class LocationIndex extends React.PureComponent {
 
     render() {
         return (
-            <TouchableOpacity onPress={()=>this.onDownDropClick()} activeOpacity={0.7}
+            <TouchableOpacity onLongPress={()=>this.onDownDropClick()} activeOpacity={0.7}
                 collapsable={false} ref={(o)=>this.listRow=o} style={this.props.containerStyle}>
                 {this.props.children}
                 <LocationModal ref={(o)=>this.itemModal=o} {...this.props} />

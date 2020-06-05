@@ -39,14 +39,16 @@ class LocationIndex extends React.PureComponent {
             callback&&callback({left, top, width, height});
         });
     }
-
+    onPress = ()=>{
+        this.props.onPress&&this.props.onPress()
+    }
     onDownDropClick = () => {
         Keyboard.dismiss();
         this.getPosition((position)=>{
             let downDropData = this.props.menuList || [];
             if (downDropData&&downDropData.length>0) {
                 this.itemModal&&this.itemModal.onShow(downDropData,position,(onClickRes)=>{
-                    this.props.onPress&&this.props.onPress(onClickRes);
+                    this.props.onLongPress&&this.props.onLongPress(onClickRes);
                 });
             }
         });
@@ -54,7 +56,7 @@ class LocationIndex extends React.PureComponent {
 
     render() {
         return (
-            <TouchableOpacity onLongPress={()=>this.onDownDropClick()} activeOpacity={0.7}
+            <TouchableOpacity onLongPress={()=>this.onDownDropClick()} onPress={()=>this.onPress()} activeOpacity={0.7}
                 collapsable={false} ref={(o)=>this.listRow=o} style={this.props.containerStyle}>
                 {this.props.children}
                 <LocationModal ref={(o)=>this.itemModal=o} {...this.props} />

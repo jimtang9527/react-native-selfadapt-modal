@@ -15,6 +15,7 @@ export default class NativeModal extends Component{
 				visible = {this.props.visible&&this.props.visible}
 				onRequestClose = {()=>{this.props.onClose&&this.props.onClose()}}
 				transparent = {true} 
+				statusBarTranslucent
 				supportedOrientations={['portrait', 'landscape']}>
 				<View style = {[styles.container,this.props.style]}>
 					<TouchableWithoutFeedback onPress = {()=>{this.props.onClose&&this.props.onClose()}}>
